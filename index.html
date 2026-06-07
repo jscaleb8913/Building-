@@ -16,7 +16,7 @@
     /* neon gold */
     --gold: #ffec57;
     --gold2: #fff98c;
-    --glow: rgba(255, 236, 87, 0.6);
+    --glow: rgba(255, 236, 87, 0.3); /* LOWERED INTENSITY */
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -25,7 +25,7 @@ a{text-decoration:none;color:var(--gold);}
 a:hover{color:var(--gold2);}
 
 /* Cursor glow */
-.glow{position:fixed;width:250px;height:250px;background:var(--gold);filter:blur(150px);opacity:0.2;pointer-events:none;transform:translate(-50%,-50%);z-index:0;}
+.glow{position:fixed;width:250px;height:250px;background:var(--gold);filter:blur(150px);opacity:0.15;pointer-events:none;transform:translate(-50%,-50%);z-index:0;}
 
 /* Header */
 header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:20px 40px;background:rgba(7,7,10,0.85);backdrop-filter:blur(10px);z-index:1000;}
@@ -35,7 +35,7 @@ nav a:hover{color:var(--gold2);}
 
 /* Hero */
 .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;}
-.hero h1{font-size:90px;background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold2), 0 0 30px var(--gold);animation: shine 6s linear infinite;background-size: 200%;}
+.hero h1{font-size:90px;background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow: 0 0 5px var(--gold), 0 0 15px var(--gold2), 0 0 25px var(--gold);animation: shine 6s linear infinite;background-size: 200%;}
 @keyframes shine{0%{background-position:0%;}100%{background-position:200%;}}
 .hero p{color:var(--muted);font-size:20px;margin-top:10px;}
 .hero a{margin-top:25px;padding:12px 26px;background:var(--gold);color:#000;font-weight:700;border-radius:8px;}
@@ -52,14 +52,14 @@ section{padding:120px 20px;max-width:1100px;margin:auto;}
 .skill ul{list-style:none;color:var(--muted);margin-top:10px;}
 .skill li{margin:6px 0;}
 
-/* Work / YouTube */
+/* Work / YouTube / Reviews */
 .projects,.youtube-grid,.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
 .project,.video,.review{background:var(--surface);padding:15px;border-radius:12px;transition:0.3s;border:1px solid transparent;}
-.project:hover,.video:hover,.review:hover{box-shadow:0 0 40px var(--glow),0 0 80px var(--glow);border:1px solid rgba(255,236,87,0.3);}
+.project:hover,.video:hover,.review:hover{box-shadow:0 0 20px var(--glow),0 0 40px var(--glow);border:1px solid rgba(255,236,87,0.2);}
 .project h3,.video h3{color:var(--text);margin-top:10px;font-size:16px;}
-.placeholder .ph{width:100%;height:180px;background:linear-gradient(135deg,#0f1117,#1a1f2a);border-radius:8px;border:1px dashed rgba(255,236,87,0.3);}
+.placeholder .ph{width:100%;height:180px;background:linear-gradient(135deg,#0f1117,#1a1f2a);border-radius:8px;border:1px dashed rgba(255,236,87,0.2);}
 .video iframe{width:100%;height:180px;border-radius:8px;}
-.review img{width:100%;border-radius:10px;display:block;}
+.review img,.project img{width:100%;border-radius:10px;display:block;}
 
 /* About */
 .about{text-align:center;max-width:750px;margin:auto;color:var(--muted);font-size:18px;}
@@ -96,7 +96,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #2
 <!-- ABOUT -->
 <section id="about">
     <h2 class="title">About Me</h2>
-    <p class="about">I'm StormSpeedSlayer on Roblox (JSCaleb). I specialize in creating polished gameplay systems with high-quality VFX, scripting, and GUI design. Currently developing exciting upcoming Roblox experiences.</p>
+    <p class="about">I'm StormSpeedSlayer on Roblox (JSCaleb). I specialize in polished gameplay systems with high-quality VFX, scripting, and GUI design. Currently developing exciting upcoming Roblox experiences.</p>
 </section>
 
 <!-- SKILLS -->
@@ -119,9 +119,9 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #2
 <section id="pastwork">
     <h2 class="title">Past Work</h2>
     <div class="projects">
-        <div class="project placeholder"><div class="ph"></div><h3>Project Slot</h3></div>
-        <div class="project placeholder"><div class="ph"></div><h3>Project Slot</h3></div>
-        <div class="project placeholder"><div class="ph"></div><h3>Project Slot</h3></div>
+        <div class="project"><img src="https://i.imgur.com/1H7lK5a.png" alt="Project 1"><h3>Project Slot</h3></div>
+        <div class="project"><img src="https://i.imgur.com/3y0FZ4n.png" alt="Project 2"><h3>Project Slot</h3></div>
+        <div class="project"><img src="https://i.imgur.com/kQ2RbJm.png" alt="Project 3"><h3>Project Slot</h3></div>
     </div>
 </section>
 
@@ -129,9 +129,9 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #2
 <section id="reviews">
     <h2 class="title">Reviews</h2>
     <div class="reviews">
-        <div class="review"><img src="review1.png" alt="review"></div>
-        <div class="review"><img src="review2.png" alt="review"></div>
-        <div class="review"><img src="review3.jpg" alt="review"></div>
+        <div class="review"><img src="https://i.imgur.com/abcd123.png" alt="review1"></div>
+        <div class="review"><img src="https://i.imgur.com/wxyz456.png" alt="review2"></div>
+        <div class="review"><img src="https://i.imgur.com/efgh789.jpg" alt="review3"></div>
     </div>
 </section>
 
@@ -139,7 +139,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #2
 <section id="socials">
     <h2 class="title">Socials</h2>
     <div class="socials">
-        <p>Discord (recommended for contact)</p>
+        <p>Discord (recommended)</p>
         <a href="https://discord.com/users/jscaleb8913">jscaleb8913</a>
         <p>Roblox</p>
         <a href="https://www.roblox.com/users/StormSpeedSlayer/profile">StormSpeedSlayer</a>
@@ -149,39 +149,4 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #2
 </section>
 
 <footer>
-    © 2026 JSCaleb — Roblox Developer
-</footer>
-
-<script>
-// Cursor glow
-const glow = document.getElementById("glow");
-document.addEventListener("mousemove", (e) => {glow.style.left = e.clientX + "px"; glow.style.top = e.clientY + "px";});
-
-// YouTube auto-load
-const API_KEY = "YOUR_API_KEY"; // replace with YouTube API key
-const CHANNEL_ID = "YOUR_CHANNEL_ID"; // replace with your channel ID
-
-async function loadVideos(){
-    try{
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6`);
-        const data = await res.json();
-        const grid = document.getElementById("youtubeGrid");
-        data.items.forEach(video=>{
-            if(video.id.videoId){
-                grid.innerHTML += `<div class="video"><iframe src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe><h3>${video.snippet.title}</h3></div>`;
-            }
-        });
-    }catch(err){console.log("YouTube load failed",err);}
-}
-loadVideos();
-
-// Scroll tracking
-window.addEventListener("scroll", ()=>{
-    let scrollTop = window.scrollY;
-    let docHeight = document.body.scrollHeight - window.innerHeight;
-    let percent = (scrollTop / docHeight) * 100;
-    if(percent > 90){console.log("User reached bottom");}
-});
-</script>
-</body>
-</html>
+    © 2026 JSCaleb — Roblox
