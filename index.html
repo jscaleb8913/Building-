@@ -1,221 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSCaleb - Roblox Developer Portfolio</title>
-    <style>
-        /* ===== Color Palette ===== */
-        :root {
-            --primary-yellow: #FFD700; /* Goldish yellow */
-            --dark-bg: #111;           /* Dark background */
-            --light-bg: #fff;          /* White */
-            --text-light: #fff;        /* White text */
-            --text-dark: #111;         /* Dark text */
-            --accent: #FFC107;         /* Slightly muted yellow for accents */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSCaleb - Roblox Developer</title>
 
-        /* ===== Reset & Base Styles ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+<style>
+:root{
+    --bg:#080808;
+    --surface:#121212;
+    --surface2:#1a1a1a;
+    --gold:#f5c542;
+    --goldsoft:#d9a92f;
+    --white:#f8f8f8;
+    --gray:#9b9b9b;
+}
 
-        a {
-            text-decoration: none;
-            color: var(--primary-yellow);
-            transition: 0.3s;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        a:hover {
-            color: var(--accent);
-        }
+body{
+    font-family:'Space Grotesk',sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
 
-        header {
-            background-color: var(--dark-bg);
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-yellow);
-        }
+a{
+    color:var(--gold);
+    text-decoration:none;
+}
 
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-yellow);
-        }
+a:hover{
+    color:var(--goldsoft);
+}
 
-        nav {
-            margin-top: 10px;
-        }
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:rgba(8,8,8,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
 
-        nav a {
-            margin: 0 15px;
-            font-weight: bold;
-        }
+header h1{
+    color:var(--gold);
+    font-size:22px;
+}
 
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+nav a{
+    margin-left:20px;
+    color:var(--white);
+    font-weight:700;
+}
 
-        /* ===== Hero Section ===== */
-        .hero {
-            text-align: center;
-        }
+nav a:hover{
+    color:var(--gold);
+}
 
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
+.hero h1{
+    font-size:80px;
+    color:var(--gold);
+}
 
-        .hero a {
-            padding: 10px 25px;
-            background-color: var(--primary-yellow);
-            color: var(--dark-bg);
-            font-weight: bold;
-            border-radius: 5px;
-        }
+.hero p{
+    font-size:22px;
+    color:var(--gray);
+    margin-top:10px;
+}
 
-        .hero a:hover {
-            background-color: var(--accent);
-        }
+.hero a{
+    margin-top:25px;
+    padding:12px 25px;
+    background:var(--gold);
+    color:#000;
+    font-weight:700;
+    border-radius:8px;
+}
 
-        /* ===== About Section ===== */
-        #about ul {
-            list-style: disc inside;
-            margin-top: 10px;
-        }
+.hero a:hover{
+    background:var(--goldsoft);
+}
 
-        /* ===== Portfolio Section ===== */
-        .projects {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
+/* GLOW CURSOR */
+.glow{
+    position:fixed;
+    width:200px;
+    height:200px;
+    background:var(--gold);
+    filter:blur(140px);
+    opacity:0.15;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+}
 
-        .project {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 10px;
-            width: 300px;
-            transition: transform 0.3s;
-        }
+/* SECTIONS */
+section{
+    padding:120px 20px;
+    max-width:1100px;
+    margin:auto;
+}
 
-        .project:hover {
-            transform: translateY(-5px);
-            border: 2px solid var(--primary-yellow);
-        }
+.title{
+    font-size:42px;
+    text-align:center;
+    margin-bottom:60px;
+    color:var(--gold);
+}
 
-        .project img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+/* PROJECTS */
+.projects{
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+}
 
-        /* ===== Contact Section ===== */
-        #contact {
-            text-align: center;
-        }
+.project{
+    background:var(--surface);
+    padding:30px;
+    border-radius:12px;
+    transition:0.3s;
+}
 
-        #contact p {
-            margin-bottom: 10px;
-        }
+.project:hover{
+    transform:translateY(-8px);
+    background:var(--surface2);
+}
 
-        /* ===== Footer ===== */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: var(--dark-bg);
-            border-top: 2px solid var(--primary-yellow);
-            margin-top: 40px;
-        }
+.project h3{
+    color:var(--gold);
+    font-size:28px;
+    margin-bottom:10px;
+}
 
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            .projects {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+.project p{
+    color:var(--gray);
+}
+
+/* SKILLS */
+.skills{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.skill{
+    flex:1;
+    min-width:250px;
+    background:var(--surface);
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.skill h3{
+    color:var(--gold);
+    margin-bottom:10px;
+}
+
+.skill ul{
+    list-style:none;
+    color:var(--gray);
+}
+
+.skill li{
+    margin:6px 0;
+}
+
+/* ABOUT */
+.about{
+    text-align:center;
+    max-width:700px;
+    margin:auto;
+    color:var(--gray);
+    font-size:18px;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    font-size:20px;
+    font-weight:700;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--gray);
+    border-top:1px solid #222;
+}
+</style>
+
 </head>
+
 <body>
 
-    <!-- Header / Navbar -->
-    <header>
-        <h1>JSCaleb</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<div class="glow" id="glow"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Roblox Developer</h2>
-        <p>Creating immersive experiences through VFX, scripting, and GUI design</p>
-        <a href="#portfolio">View My Work</a>
-    </section>
+<header>
+    <h1>JSCaleb</h1>
+    <nav>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi! I'm JSCaleb, a Roblox developer focused on VFX, scripting, and GUI design. I love bringing games to life with polished effects and smooth user interfaces.</p>
-        <h3>Skills:</h3>
-        <ul>
-            <li>Roblox Lua Scripting</li>
-            <li>Visual Effects (VFX)</li>
-            <li>Graphical User Interface (GUI) Design</li>
-            <li>Game Systems & Mechanics</li>
-        </ul>
-    </section>
+<section class="hero">
+    <h1>JSCaleb</h1>
+    <p>Roblox Developer — VFX • Scripting • GUI Design</p>
+    <a href="#work">View Work</a>
+</section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="projects">
-            <div class="project">
-                <img src="project1-screenshot.png" alt="Project 1 Screenshot">
-                <h3>Project 1</h3>
-                <p>Role: VFX & GUI</p>
-                <a href="#">Play on Roblox</a>
-            </div>
-            <div class="project">
-                <img src="project2-screenshot.png" alt="Project 2 Screenshot">
-                <h3>Project 2</h3>
-                <p>Role: Scripting</p>
-                <a href="#">Play on Roblox</a>
-            </div>
-            <!-- Add more projects here -->
+<section id="work">
+    <h2 class="title">Selected Work</h2>
+
+    <div class="projects">
+        <div class="project">
+            <h3>Upcoming Roblox Game</h3>
+            <p>Combat systems, VFX, and GUI design for an upcoming release.</p>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Want to collaborate or hire me for VFX, scripting, or GUI work?</p>
-        <p><strong>Discord:</strong> jscaleb8913</p>
-    </section>
+        <div class="project">
+            <h3>VFX Framework</h3>
+            <p>Reusable visual effects system for abilities and combat.</p>
+        </div>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 JSCaleb</p>
-    </footer>
+<section id="skills">
+    <h2 class="title">What I Do</h2>
+
+    <div class="skills">
+        <div class="skill">
+            <h3>VFX</h3>
+            <ul>
+                <li>Particles</li>
+                <li>Trails</li>
+                <li>Hit Effects</li>
+                <li>Abilities</li>
+            </ul>
+        </div>
+
+        <div class="skill">
+            <h3>Scripting</h3>
+            <ul>
+                <li>Combat Systems</li>
+                <li>Game Mechanics</li>
+                <li>Optimization</li>
+                <li>Frameworks</li>
+            </ul>
+        </div>
+
+        <div class="skill">
+            <h3>GUI</h3>
+            <ul>
+                <li>HUD Design</li>
+                <li>Menus</li>
+                <li>Animations</li>
+                <li>User Experience</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="title">About</h2>
+
+    <p class="about">
+        I'm JSCaleb, also known as StormSpeedSlayer on Roblox.
+        I specialize in VFX, scripting, and GUI design, creating
+        polished gameplay experiences that feel smooth, responsive,
+        and visually satisfying.
+    </p>
+</section>
+
+<section id="contact">
+    <h2 class="title">Contact</h2>
+
+    <div class="contact">
+        <p>Discord</p>
+        <a href="https://discord.com/users/jscaleb8913" target="_blank">
+            jscaleb8913
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 JSCaleb — Roblox Developer
+</footer>
+
+<script>
+const glow = document.getElementById("glow");
+
+document.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+</script>
 
 </body>
 </html>
