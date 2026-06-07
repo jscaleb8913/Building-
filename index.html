@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSCaleb - Roblox Developer</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JSCaleb | Studio Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
 
 <style>
 :root{
-    --bg:#06070b;
-    --surface:#0e1118;
+    --bg:#05060a;
+    --surface:#0d111a;
     --text:#f5f5f5;
     --muted:#9aa0a6;
     --gold:#ffd84a;
-    --gold2:#fff3a0;
 }
 
-/* RESET */
+/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
     font-family:'Space Grotesk',sans-serif;
@@ -26,40 +25,59 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= CURSOR GLOW (FIXED) ================= */
-.cursor-glow{
+/* ================= LOADING SCREEN ================= */
+#loader{
     position:fixed;
-    width:260px;
-    height:260px;
+    inset:0;
+    background:#05060a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
+#loader h1{
+    color:var(--gold);
+    font-size:26px;
+    letter-spacing:3px;
+    animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+    0%,100%{opacity:0.4;}
+    50%{opacity:1;}
+}
+
+/* ================= SCROLL BAR ================= */
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    width:0%;
+    background:var(--gold);
+    z-index:9998;
+}
+
+/* ================= PARTICLES ================= */
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:0;
+}
+
+/* ================= CURSOR ================= */
+.cursor{
+    position:fixed;
+    width:220px;
+    height:220px;
+    border-radius:50%;
     background:radial-gradient(circle, rgba(255,216,74,0.25), transparent 60%);
-    border-radius:50%;
     pointer-events:none;
-    z-index:0;
-    filter:blur(20px);
     transform:translate(-50%,-50%);
-}
-
-/* ================= BACKGROUND ================= */
-.bg1,.bg2{
-    position:fixed;
-    width:600px;
-    height:600px;
-    border-radius:50%;
-    filter:blur(90px);
     z-index:0;
 }
-.bg1{
-    top:-250px;
-    left:-250px;
-    background:radial-gradient(circle,rgba(255,216,74,0.18),transparent 60%);
-}
-.bg2{
-    bottom:-250px;
-    right:-250px;
-    background:radial-gradient(circle,rgba(255,216,74,0.10),transparent 60%);
-}
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
     position:fixed;
     top:0;
@@ -67,21 +85,20 @@ header{
     display:flex;
     justify-content:space-between;
     padding:18px 40px;
-    background:rgba(6,7,11,0.6);
+    background:rgba(5,6,10,0.7);
     backdrop-filter:blur(12px);
     z-index:1000;
     border-bottom:1px solid rgba(255,255,255,0.05);
 }
-header h1{color:var(--gold);font-size:20px;}
+header h1{color:var(--gold);}
 nav a{
     margin-left:18px;
     color:var(--muted);
     text-decoration:none;
-    font-weight:600;
 }
 nav a:hover{color:var(--gold);}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
     height:100vh;
     display:flex;
@@ -93,15 +110,15 @@ nav a:hover{color:var(--gold);}
     z-index:1;
 }
 .hero h1{
-    font-size:88px;
-    background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+    font-size:90px;
+    background:linear-gradient(90deg,var(--gold),#fff3a0,var(--gold));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
-.hero p{color:var(--muted);margin-top:10px;}
+.hero p{color:var(--muted);}
 .hero a{
     margin-top:20px;
-    padding:12px 24px;
+    padding:12px 26px;
     background:var(--gold);
     color:#000;
     font-weight:700;
@@ -109,7 +126,7 @@ nav a:hover{color:var(--gold);}
     text-decoration:none;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 section{
     padding:120px 20px;
     max-width:1100px;
@@ -120,219 +137,192 @@ section{
 .title{
     text-align:center;
     font-size:40px;
-    margin-bottom:40px;
     color:var(--gold);
+    margin-bottom:40px;
 }
 
-/* ABOUT */
-.about{
-    text-align:center;
-    max-width:750px;
-    margin:auto;
-    color:var(--muted);
-    font-size:18px;
-}
-
-/* SKILLS */
-.skills{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-.skill{
+/* ================= FEATURED VIDEO ================= */
+.featured{
     background:var(--surface);
-    padding:25px;
-    border-radius:14px;
-    min-width:250px;
+    border-radius:16px;
+    overflow:hidden;
     border:1px solid rgba(255,255,255,0.05);
 }
-.skill h3{color:var(--gold);}
-.skill ul{list-style:none;color:var(--muted);margin-top:10px;}
-.skill li{margin:6px 0;}
+.featured iframe{
+    width:100%;
+    height:500px;
+}
+.featured h3{
+    padding:15px;
+    color:var(--muted);
+}
 
-/* WORK */
-.youtube-grid{
+/* ================= GRID ================= */
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:20px;
 }
-.video{
+.card{
     background:var(--surface);
     border-radius:14px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,0.05);
     cursor:pointer;
+    transition:0.3s;
 }
-.video img{width:100%;display:block;}
-.video h3{
-    padding:10px;
-    font-size:13px;
-    color:var(--muted);
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 30px rgba(255,216,74,0.15);
+}
+.card img{width:100%;}
+.card h4{padding:10px;color:var(--muted);font-size:13px;}
+
+/* ================= CTA ================= */
+.cta{
+    text-align:center;
+    padding:60px;
+    background:var(--surface);
+    border-radius:16px;
+}
+.cta h2{color:var(--gold);}
+.cta p{color:var(--muted);margin-top:10px;}
+.cta a{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    background:var(--gold);
+    color:#000;
+    font-weight:700;
+    border-radius:10px;
+    text-decoration:none;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 #modal{
     position:fixed;
     inset:0;
+    background:rgba(0,0,0,0.9);
     display:none;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,0.85);
-    z-index:2000;
+    z-index:9999;
 }
 #modal iframe{
     width:80%;
-    height:60%;
-    border-radius:12px;
+    height:70%;
 }
 #close{
     position:absolute;
     top:20px;
     right:30px;
-    font-size:32px;
+    font-size:30px;
     color:var(--gold);
     cursor:pointer;
-}
-
-/* REVIEWS */
-.reviews{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.review{
-    background:var(--surface);
-    border-radius:14px;
-    overflow:hidden;
-}
-.review img{width:100%;}
-
-/* SOCIALS */
-.socials{text-align:center;}
-.socials a{
-    display:block;
-    margin:10px;
-    color:var(--gold);
-    font-weight:700;
-    text-decoration:none;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--muted);
-    border-top:1px solid rgba(255,255,255,0.05);
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg1"></div>
-<div class="bg2"></div>
-<div class="cursor-glow"></div>
+<div id="loader"><h1>JSCALEB STUDIO</h1></div>
+<div id="progress"></div>
+<canvas id="bg"></canvas>
+<div class="cursor"></div>
 
 <header>
 <h1>JSCaleb</h1>
 <nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
 <a href="#work">Work</a>
-<a href="#reviews">Reviews</a>
-<a href="#socials">Socials</a>
+<a href="#featured">Featured</a>
+<a href="#contact">Contact</a>
 </nav>
 </header>
 
 <section class="hero">
 <h1>JSCaleb</h1>
 <p>Roblox Developer • VFX • Scripting • GUI</p>
-<a href="#work">View Work</a>
+<a href="#work">Explore Work</a>
 </section>
 
-<section id="about">
-<h2 class="title">About Me</h2>
-<p class="about">
-StormSpeedSlayer on Roblox. I build high-quality VFX, scripting systems, and UI for Roblox experiences.
-</p>
-</section>
-
-<section id="skills">
-<h2 class="title">Skills</h2>
-<div class="skills">
-<div class="skill"><h3>VFX</h3><ul><li>Particles</li><li>Trails</li><li>Abilities</li></ul></div>
-<div class="skill"><h3>Scripting</h3><ul><li>Combat</li><li>Systems</li><li>Optimization</li></ul></div>
-<div class="skill"><h3>GUI</h3><ul><li>HUD</li><li>Menus</li><li>UX Design</li></ul></div>
-</div>
+<section id="featured">
+<h2 class="title">Featured Work</h2>
+<div class="featured" id="featured"></div>
 </section>
 
 <section id="work">
-<h2 class="title">Work</h2>
-<div class="youtube-grid" id="grid"></div>
+<h2 class="title">All Work</h2>
+<div class="grid" id="grid"></div>
 </section>
 
-<section id="reviews">
-<h2 class="title">Reviews</h2>
-<div class="reviews">
-<div class="review"><img src="https://via.placeholder.com/400x250?text=Review+1"></div>
-<div class="review"><img src="https://via.placeholder.com/400x250?text=Review+2"></div>
-<div class="review"><img src="https://via.placeholder.com/400x250?text=Review+3"></div>
-</div>
-</section>
-
-<section id="socials">
-<h2 class="title">Socials</h2>
-<div class="socials">
+<section id="contact">
+<div class="cta">
+<h2>Hire Me</h2>
+<p>Roblox VFX, scripting, GUI systems</p>
 <a>Discord: jscaleb8913</a>
-<a href="https://www.roblox.com/users/StormSpeedSlayer/profile">Roblox</a>
-<a href="https://x.com/jscaleb8913">X (Twitter)</a>
 </div>
 </section>
 
-<footer>© 2026 JSCaleb</footer>
-
-<!-- MODAL -->
 <div id="modal">
-<div id="close">&times;</div>
-<iframe id="frame" src=""></iframe>
+<div id="close">×</div>
+<iframe id="frame"></iframe>
 </div>
 
 <script>
-/* ================= CURSOR FOLLOW ================= */
-const cursor=document.querySelector(".cursor-glow");
-let mx=0,my=0,cx=0,cy=0;
-
-window.addEventListener("mousemove",(e)=>{
-mx=e.clientX;my=e.clientY;
+/* ================= LOADER ================= */
+window.addEventListener("load",()=>{
+setTimeout(()=>document.getElementById("loader").style.display="none",800);
 });
 
+/* ================= SCROLL PROGRESS ================= */
+window.addEventListener("scroll",()=>{
+let h=document.documentElement;
+let scrolled=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+});
+
+/* ================= CURSOR ================= */
+const cursor=document.querySelector(".cursor");
+let mx=0,my=0,cx=0,cy=0;
+window.addEventListener("mousemove",(e)=>{mx=e.clientX;my=e.clientY;});
 function animate(){
 cx+=(mx-cx)*0.12;
 cy+=(my-cy)*0.12;
-cursor.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+cursor.style.transform=`translate(${cx}px,${cy}px)`;
 requestAnimationFrame(animate);
 }
 animate();
 
-/* ================= MODAL ================= */
-const modal=document.getElementById("modal");
-const frame=document.getElementById("frame");
+/* ================= PARTICLES ================= */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-document.body.addEventListener("click",(e)=>{
-const v=e.target.closest(".video");
-if(v){
-frame.src=`https://www.youtube.com/embed/${v.dataset.id}`;
-modal.style.display="flex";
-}
+let particles=[];
+for(let i=0;i<60;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
 });
+}
 
-document.getElementById("close").onclick=()=>{
-modal.style.display="none";
-frame.src="";
-};
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,216,74,0.3)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=p.d;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(draw);
+}
+draw();
 
-/* ================= YOUTUBE PIPELINE ================= */
+/* ================= YOUTUBE ================= */
 const API_KEY="YOUR_API_KEY";
 const CHANNEL_ID="UCN0kprprvA-1bWbNzfk6HRg";
 
@@ -340,19 +330,37 @@ fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${C
 .then(r=>r.json())
 .then(d=>{
 const grid=document.getElementById("grid");
-d.items.forEach(i=>{
-if(i.id.videoId){
-const el=document.createElement("div");
-el.className="video";
-el.dataset.id=i.id.videoId;
-el.innerHTML=`
-<img src="${i.snippet.thumbnails.high.url}">
-<h3>${i.snippet.title}</h3>
-`;
-grid.appendChild(el);
+const featured=document.getElementById("featured");
+
+d.items.forEach((v,i)=>{
+if(v.id.videoId){
+
+if(i===0){
+featured.innerHTML=`
+<iframe src="https://www.youtube.com/embed/${v.id.videoId}" allowfullscreen></iframe>
+<h3>${v.snippet.title}</h3>`;
+}
+
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<img src="${v.snippet.thumbnails.high.url}">
+<h4>${v.snippet.title}</h4>`;
+card.onclick=()=>open(v.id.videoId);
+grid.appendChild(card);
 }
 });
 });
+
+/* ================= MODAL ================= */
+const modal=document.getElementById("modal");
+const frame=document.getElementById("frame");
+document.getElementById("close").onclick=()=>modal.style.display="none";
+
+function open(id){
+frame.src=`https://www.youtube.com/embed/${id}`;
+modal.style.display="flex";
+}
 </script>
 
 </body>
