@@ -16,7 +16,6 @@
   --gold:#ffd84a;
 }
 
-/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Space Grotesk',sans-serif;
@@ -25,14 +24,14 @@ body{
   overflow-x:hidden;
 }
 
-/* Cursor */
+/* Cursor glow (SMOOTH FIXED) */
 .cursor{
   position:fixed;
-  width:180px;
-  height:180px;
+  width:200px;
+  height:200px;
   border-radius:50%;
   pointer-events:none;
-  background:radial-gradient(circle, rgba(255,216,74,0.25), transparent 60%);
+  background:radial-gradient(circle, rgba(255,216,74,0.22), transparent 60%);
   transform:translate(-50%,-50%);
   z-index:0;
 }
@@ -44,16 +43,27 @@ header{
   padding:18px 40px;
   display:flex;
   justify-content:space-between;
-  background:rgba(6,7,11,0.6);
+  background:rgba(6,7,11,0.65);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.05);
   z-index:1000;
 }
-header h1{color:var(--gold);font-size:18px;letter-spacing:1px;}
-nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:500;}
+
+header h1{
+  color:var(--gold);
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+nav a{
+  margin-left:18px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+}
 nav a:hover{color:var(--gold);}
 
-/* Hero */
+/* HERO */
 .hero{
   height:100vh;
   display:flex;
@@ -62,14 +72,21 @@ nav a:hover{color:var(--gold);}
   align-items:center;
   text-align:center;
 }
+
 .hero h1{
   font-size:78px;
   font-weight:700;
-  background:linear-gradient(90deg,var(--gold),#fff2a0,var(--gold));
+  background:linear-gradient(90deg,var(--gold),#fff3a0,var(--gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.hero p{margin-top:10px;color:var(--muted);font-size:17px;}
+
+.hero p{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:17px;
+}
+
 .hero a{
   margin-top:22px;
   padding:12px 26px;
@@ -80,21 +97,21 @@ nav a:hover{color:var(--gold);}
   text-decoration:none;
 }
 
-/* Sections */
+/* SECTIONS */
 section{
   padding:90px 20px;
   max-width:1000px;
   margin:auto;
-  position:relative;
-}
-.title{
-  font-size:34px;
-  text-align:center;
-  margin-bottom:35px;
-  color:var(--gold);
 }
 
-/* About */
+.title{
+  text-align:center;
+  font-size:34px;
+  color:var(--gold);
+  margin-bottom:35px;
+}
+
+/* ABOUT */
 .about{
   text-align:center;
   max-width:700px;
@@ -103,13 +120,14 @@ section{
   font-size:17px;
 }
 
-/* Skills */
+/* SKILLS */
 .skills{
   display:flex;
   gap:18px;
   flex-wrap:wrap;
   justify-content:center;
 }
+
 .skill{
   background:var(--card);
   padding:22px;
@@ -117,16 +135,22 @@ section{
   min-width:240px;
   border:1px solid rgba(255,255,255,0.05);
 }
+
 .skill h3{color:var(--gold);}
-.skill ul{margin-top:10px;list-style:none;color:var(--muted);}
+.skill ul{
+  margin-top:10px;
+  list-style:none;
+  color:var(--muted);
+}
 .skill li{margin:5px 0;}
 
-/* Work */
+/* WORK */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:18px;
 }
+
 .video{
   background:var(--card);
   border-radius:12px;
@@ -135,26 +159,36 @@ section{
   border:1px solid rgba(255,255,255,0.05);
   transition:0.2s;
 }
-.video:hover{transform:translateY(-4px);}
-.video img{width:100%;}
-.video h4{padding:10px;font-size:13px;color:var(--muted);}
 
-/* Reviews */
+.video:hover{transform:translateY(-4px);}
+
+.video img{width:100%;display:block;}
+
+.video h4{
+  padding:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* REVIEWS */
 .reviews{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:18px;
 }
+
 .review{
   background:var(--card);
   border-radius:12px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.05);
 }
+
 .review img{width:100%;display:block;}
 
-/* Socials */
+/* SOCIALS */
 .socials{text-align:center;}
+
 .socials a{
   display:block;
   margin:10px;
@@ -163,7 +197,7 @@ section{
   font-weight:600;
 }
 
-/* Modal */
+/* MODAL */
 #modal{
   position:fixed;
   inset:0;
@@ -172,7 +206,13 @@ section{
   justify-content:center;
   align-items:center;
 }
-#modal iframe{width:80%;height:65%;border:none;}
+
+#modal iframe{
+  width:80%;
+  height:65%;
+  border:none;
+}
+
 #close{
   position:absolute;
   top:20px;
@@ -183,6 +223,7 @@ section{
 }
 </style>
 </head>
+
 <body>
 
 <div class="cursor"></div>
@@ -218,10 +259,12 @@ StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting syst
 <h3>VFX</h3>
 <ul><li>Particles</li><li>Abilities</li><li>Combat FX</li></ul>
 </div>
+
 <div class="skill">
 <h3>Scripting</h3>
 <ul><li>Combat Systems</li><li>Game Logic</li><li>Optimization</li></ul>
 </div>
+
 <div class="skill">
 <h3>GUI</h3>
 <ul><li>HUD</li><li>Menus</li><li>UX Design</li></ul>
@@ -247,47 +290,75 @@ StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting syst
 <h2 class="title">Socials</h2>
 <div class="socials">
 <a>Discord: jscaleb8913</a>
-<a href="https://www.roblox.com/users/StormSpeedSlayer" target="_blank">Roblox</a>
-<a href="https://x.com/jscaleb8913" target="_blank">X (Twitter)</a>
+<a href="https://www.roblox.com/users/StormSpeedSlayer">Roblox</a>
+<a href="https://x.com/jscaleb8913">X (Twitter)</a>
 </div>
 </section>
 
-<!-- Modal -->
+<!-- MODAL -->
 <div id="modal">
 <div id="close">×</div>
 <iframe id="frame"></iframe>
 </div>
 
 <script>
-/* Cursor follow */
-const cursor=document.querySelector(".cursor");
-window.addEventListener("mousemove",e=>{
-  cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+
+/* ===== CURSOR FIX (SMOOTH BUT NOT LAGGY) ===== */
+const cursor = document.querySelector(".cursor");
+
+let x = 0, y = 0;
+let mx = 0, my = 0;
+
+window.addEventListener("mousemove",(e)=>{
+  mx = e.clientX;
+  my = e.clientY;
 });
 
-/* Modal */
-const modal=document.getElementById("modal");
-const frame=document.getElementById("frame");
-document.getElementById("close").onclick=()=>{modal.style.display="none";frame.src="";};
-function openVideo(id){frame.src=`https://www.youtube.com/embed/${id}`;modal.style.display="flex";}
+function animate(){
+  x += (mx - x) * 0.18;
+  y += (my - y) * 0.18;
+  cursor.style.transform = `translate(${x}px, ${y}px)`;
+  requestAnimationFrame(animate);
+}
+animate();
 
-/* YouTube auto populate */
-const API_KEY="YOUR_API_KEY";
-const CHANNEL_ID="UCN0kprprvA-1bWbNzfk6HRg";
+/* ===== MODAL ===== */
+const modal = document.getElementById("modal");
+const frame = document.getElementById("frame");
+
+document.getElementById("close").onclick = () => {
+  modal.style.display = "none";
+  frame.src = "";
+};
+
+function openVideo(id){
+  frame.src = `https://www.youtube.com/embed/${id}`;
+  modal.style.display = "flex";
+}
+
+/* ===== YOUTUBE API ===== */
+const API_KEY = "YOUR_API_KEY";
+const CHANNEL_ID = "UCN0kprprvA-1bWbNzfk6HRg";
+
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=8`)
 .then(r=>r.json())
 .then(data=>{
-  const grid=document.getElementById("grid");
+  const grid = document.getElementById("grid");
+
   data.items.forEach(v=>{
     if(v.id.videoId){
-      const el=document.createElement("div");
-      el.className="video";
-      el.innerHTML=`<img src="${v.snippet.thumbnails.high.url}"><h4>${v.snippet.title}</h4>`;
-      el.onclick=()=>openVideo(v.id.videoId);
+      const el = document.createElement("div");
+      el.className = "video";
+      el.innerHTML = `
+        <img src="${v.snippet.thumbnails.high.url}">
+        <h4>${v.snippet.title}</h4>
+      `;
+      el.onclick = () => openVideo(v.id.videoId);
       grid.appendChild(el);
     }
   });
 });
 </script>
+
 </body>
 </html>
