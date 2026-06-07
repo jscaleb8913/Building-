@@ -16,6 +16,7 @@
   --gold:#ffd84a;
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Space Grotesk',sans-serif;
@@ -24,19 +25,26 @@ body{
   overflow-x:hidden;
 }
 
-/* Cursor glow (SMOOTH FIXED) */
+/* BACKGROUND SPECKS */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+/* CURSOR GLOW (FIXED + SMOOTH) */
 .cursor{
   position:fixed;
   width:200px;
   height:200px;
   border-radius:50%;
   pointer-events:none;
-  background:radial-gradient(circle, rgba(255,216,74,0.22), transparent 60%);
+  background:radial-gradient(circle, rgba(255,223,74,0.25), transparent 60%);
   transform:translate(-50%,-50%);
-  z-index:0;
+  z-index:999;
 }
 
-/* Header */
+/* HEADER */
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -48,13 +56,7 @@ header{
   border-bottom:1px solid rgba(255,255,255,0.05);
   z-index:1000;
 }
-
-header h1{
-  color:var(--gold);
-  font-size:18px;
-  letter-spacing:1px;
-}
-
+header h1{color:var(--gold);font-size:18px;}
 nav a{
   margin-left:18px;
   color:var(--muted);
@@ -72,21 +74,13 @@ nav a:hover{color:var(--gold);}
   align-items:center;
   text-align:center;
 }
-
 .hero h1{
-  font-size:78px;
-  font-weight:700;
-  background:linear-gradient(90deg,var(--gold),#fff3a0,var(--gold));
+  font-size:80px;
+  background:linear-gradient(90deg,var(--gold),#fff2a0,var(--gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
-.hero p{
-  margin-top:10px;
-  color:var(--muted);
-  font-size:17px;
-}
-
+.hero p{margin-top:10px;color:var(--muted);}
 .hero a{
   margin-top:22px;
   padding:12px 26px;
@@ -103,7 +97,6 @@ section{
   max-width:1000px;
   margin:auto;
 }
-
 .title{
   text-align:center;
   font-size:34px;
@@ -117,7 +110,6 @@ section{
   max-width:700px;
   margin:auto;
   color:var(--muted);
-  font-size:17px;
 }
 
 /* SKILLS */
@@ -127,7 +119,6 @@ section{
   flex-wrap:wrap;
   justify-content:center;
 }
-
 .skill{
   background:var(--card);
   padding:22px;
@@ -135,13 +126,8 @@ section{
   min-width:240px;
   border:1px solid rgba(255,255,255,0.05);
 }
-
 .skill h3{color:var(--gold);}
-.skill ul{
-  margin-top:10px;
-  list-style:none;
-  color:var(--muted);
-}
+.skill ul{margin-top:10px;list-style:none;color:var(--muted);}
 .skill li{margin:5px 0;}
 
 /* WORK */
@@ -150,7 +136,6 @@ section{
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:18px;
 }
-
 .video{
   background:var(--card);
   border-radius:12px;
@@ -159,16 +144,9 @@ section{
   border:1px solid rgba(255,255,255,0.05);
   transition:0.2s;
 }
-
 .video:hover{transform:translateY(-4px);}
-
-.video img{width:100%;display:block;}
-
-.video h4{
-  padding:10px;
-  font-size:13px;
-  color:var(--muted);
-}
+.video img{width:100%;}
+.video h4{padding:10px;font-size:13px;color:var(--muted);}
 
 /* REVIEWS */
 .reviews{
@@ -176,19 +154,16 @@ section{
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:18px;
 }
-
 .review{
   background:var(--card);
   border-radius:12px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.05);
 }
-
-.review img{width:100%;display:block;}
+.review img{width:100%;}
 
 /* SOCIALS */
 .socials{text-align:center;}
-
 .socials a{
   display:block;
   margin:10px;
@@ -206,13 +181,11 @@ section{
   justify-content:center;
   align-items:center;
 }
-
 #modal iframe{
   width:80%;
   height:65%;
   border:none;
 }
-
 #close{
   position:absolute;
   top:20px;
@@ -226,6 +199,7 @@ section{
 
 <body>
 
+<canvas id="bg"></canvas>
 <div class="cursor"></div>
 
 <header>
@@ -248,7 +222,7 @@ section{
 <section id="about">
 <h2 class="title">About</h2>
 <p class="about">
-StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting systems, and UI design.
+StormSpeedSlayer (JSCaleb). Roblox developer focused on VFX, scripting systems, and UI design.
 </p>
 </section>
 
@@ -257,14 +231,12 @@ StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting syst
 <div class="skills">
 <div class="skill">
 <h3>VFX</h3>
-<ul><li>Particles</li><li>Abilities</li><li>Combat FX</li></ul>
+<ul><li>Particles</li><li>Combat FX</li><li>Abilities</li></ul>
 </div>
-
 <div class="skill">
 <h3>Scripting</h3>
-<ul><li>Combat Systems</li><li>Game Logic</li><li>Optimization</li></ul>
+<ul><li>Game Systems</li><li>Optimization</li><li>Logic</li></ul>
 </div>
-
 <div class="skill">
 <h3>GUI</h3>
 <ul><li>HUD</li><li>Menus</li><li>UX Design</li></ul>
@@ -303,61 +275,77 @@ StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting syst
 
 <script>
 
-/* ===== CURSOR FIX (SMOOTH BUT NOT LAGGY) ===== */
-const cursor = document.querySelector(".cursor");
-
-let x = 0, y = 0;
-let mx = 0, my = 0;
-
-window.addEventListener("mousemove",(e)=>{
-  mx = e.clientX;
-  my = e.clientY;
+/* CURSOR FOLLOW (SMOOTH + INSTANT FEEL) */
+const cursor=document.querySelector(".cursor");
+window.addEventListener("mousemove",e=>{
+  cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
 });
 
-function animate(){
-  x += (mx - x) * 0.18;
-  y += (my - y) * 0.18;
-  cursor.style.transform = `translate(${x}px, ${y}px)`;
-  requestAnimationFrame(animate);
-}
-animate();
-
-/* ===== MODAL ===== */
-const modal = document.getElementById("modal");
-const frame = document.getElementById("frame");
-
-document.getElementById("close").onclick = () => {
-  modal.style.display = "none";
-  frame.src = "";
+/* MODAL */
+const modal=document.getElementById("modal");
+const frame=document.getElementById("frame");
+document.getElementById("close").onclick=()=>{
+  modal.style.display="none";
+  frame.src="";
 };
 
 function openVideo(id){
-  frame.src = `https://www.youtube.com/embed/${id}`;
-  modal.style.display = "flex";
+  frame.src=`https://www.youtube.com/embed/${id}`;
+  modal.style.display="flex";
 }
 
-/* ===== YOUTUBE API ===== */
-const API_KEY = "YOUR_API_KEY";
-const CHANNEL_ID = "UCN0kprprvA-1bWbNzfk6HRg";
+/* YOUTUBE API */
+const API_KEY="YOUR_API_KEY";
+const CHANNEL_ID="UCN0kprprvA-1bWbNzfk6HRg";
 
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=8`)
 .then(r=>r.json())
 .then(data=>{
-  const grid = document.getElementById("grid");
+  const grid=document.getElementById("grid");
 
   data.items.forEach(v=>{
     if(v.id.videoId){
-      const el = document.createElement("div");
-      el.className = "video";
-      el.innerHTML = `
+      const el=document.createElement("div");
+      el.className="video";
+      el.innerHTML=`
         <img src="${v.snippet.thumbnails.high.url}">
         <h4>${v.snippet.title}</h4>
       `;
-      el.onclick = () => openVideo(v.id.videoId);
+      el.onclick=()=>openVideo(v.id.videoId);
       grid.appendChild(el);
     }
   });
 });
+
+/* BACKGROUND SPECKS */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let dots=[];
+for(let i=0;i<60;i++){
+dots.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,223,74,0.25)";
+dots.forEach(d=>{
+ctx.beginPath();
+ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+ctx.fill();
+d.y+=0.2;
+if(d.y>canvas.height)d.y=0;
+});
+requestAnimationFrame(draw);
+}
+draw();
+
 </script>
 
 </body>
