@@ -3,58 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSCaleb Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<title>JSCaleb | Roblox Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --bg: #06070b;
-  --text: #f5f5f5;
-  --muted: #9aa0a6;
-  --gold: #ffd84a;
+:root{
+  --bg:#06070b;
+  --card:#0e1118;
+  --text:#f5f5f5;
+  --muted:#9aa0a6;
+  --gold:#ffd84a;
 }
 
-/* Reset & base */
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family: 'Space Grotesk', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* Cursor Glow */
-.cursor-glow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(255,216,74,0.3), transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear;
+/* Cursor */
+.cursor{
+  position:fixed;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle, rgba(255,216,74,0.25), transparent 60%);
+  transform:translate(-50%,-50%);
+  z-index:0;
 }
 
 /* Header */
-header {
-  position: fixed;
-  top:0; left:0; right:0;
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  padding:18px 40px;
   display:flex;
   justify-content:space-between;
-  padding: 18px 40px;
-  background: rgba(6,7,11,0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  z-index: 1000;
+  background:rgba(6,7,11,0.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
 }
-header h1 { color: var(--gold); }
-header nav a {
-  margin-left: 20px;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight:600;
-}
-header nav a:hover { color: var(--gold); }
+header h1{color:var(--gold);font-size:18px;letter-spacing:1px;}
+nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:500;}
+nav a:hover{color:var(--gold);}
 
 /* Hero */
 .hero{
@@ -64,124 +61,123 @@ header nav a:hover { color: var(--gold); }
   justify-content:center;
   align-items:center;
   text-align:center;
-  position: relative;
 }
 .hero h1{
-  font-size:80px;
-  background: linear-gradient(90deg, var(--gold), #fff3a0, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size:78px;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--gold),#fff2a0,var(--gold));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
-.hero p { color: var(--muted); margin-top:10px; font-size:18px; }
-.hero a {
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: var(--gold);
-  color: #000;
+.hero p{margin-top:10px;color:var(--muted);font-size:17px;}
+.hero a{
+  margin-top:22px;
+  padding:12px 26px;
+  background:var(--gold);
+  color:#000;
   font-weight:700;
   border-radius:10px;
   text-decoration:none;
 }
 
 /* Sections */
-section {
-  padding:100px 20px;
-  max-width: 1000px;
+section{
+  padding:90px 20px;
+  max-width:1000px;
   margin:auto;
+  position:relative;
 }
 .title{
-  font-size:36px;
-  color: var(--gold);
+  font-size:34px;
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:35px;
+  color:var(--gold);
 }
 
 /* About */
 .about{
   text-align:center;
-  color: var(--muted);
-  font-size:18px;
   max-width:700px;
   margin:auto;
+  color:var(--muted);
+  font-size:17px;
 }
 
 /* Skills */
-.skills {
+.skills{
   display:flex;
+  gap:18px;
   flex-wrap:wrap;
   justify-content:center;
-  gap:20px;
 }
 .skill{
-  background: rgba(14,17,24,0.9);
+  background:var(--card);
+  padding:22px;
   border-radius:14px;
-  padding:25px;
-  min-width:250px;
+  min-width:240px;
   border:1px solid rgba(255,255,255,0.05);
 }
-.skill h3 { color: var(--gold); }
-.skill ul{ list-style:none; margin-top:10px; color: var(--muted);}
-.skill li { margin:5px 0; }
+.skill h3{color:var(--gold);}
+.skill ul{margin-top:10px;list-style:none;color:var(--muted);}
+.skill li{margin:5px 0;}
 
-/* Work / YouTube Grid */
-.youtube-grid{
+/* Work */
+.grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
 }
 .video{
-  cursor:pointer;
+  background:var(--card);
   border-radius:12px;
   overflow:hidden;
-  background: rgba(14,17,24,0.9);
+  cursor:pointer;
   border:1px solid rgba(255,255,255,0.05);
-  transition: transform 0.2s;
+  transition:0.2s;
 }
-.video:hover{transform: translateY(-6px);}
-.video img{width:100%; display:block;}
-.video h3{
-  padding:8px;
-  color: var(--muted);
-  font-size:14px;
-}
+.video:hover{transform:translateY(-4px);}
+.video img{width:100%;}
+.video h4{padding:10px;font-size:13px;color:var(--muted);}
 
 /* Reviews */
 .reviews{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
 }
-.review img{
-  width:100%;
+.review{
+  background:var(--card);
   border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
 }
+.review img{width:100%;display:block;}
 
 /* Socials */
 .socials{text-align:center;}
 .socials a{
   display:block;
-  margin:10px 0;
-  font-weight:700;
-  color: var(--gold);
+  margin:10px;
+  color:var(--gold);
   text-decoration:none;
+  font-weight:600;
 }
 
 /* Modal */
 #modal{
-  position:fixed; inset:0;
+  position:fixed;
+  inset:0;
   display:none;
+  background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
-  background: rgba(0,0,0,0.9);
-  z-index:2000;
 }
-#modal iframe{
-  width:80%;
-  height:60%;
-}
-#modal-close{
-  position:absolute; top:20px; right:30px;
-  font-size:32px;
+#modal iframe{width:80%;height:65%;border:none;}
+#close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
   color:var(--gold);
   cursor:pointer;
 }
@@ -189,7 +185,7 @@ section {
 </head>
 <body>
 
-<div class="cursor-glow"></div>
+<div class="cursor"></div>
 
 <header>
 <h1>JSCaleb</h1>
@@ -209,8 +205,10 @@ section {
 </section>
 
 <section id="about">
-<h2 class="title">About Me</h2>
-<p class="about">StormSpeedSlayer on Roblox. I build VFX, scripting systems, and UI for Roblox experiences.</p>
+<h2 class="title">About</h2>
+<p class="about">
+StormSpeedSlayer (JSCaleb). Roblox developer specializing in VFX, scripting systems, and UI design.
+</p>
 </section>
 
 <section id="skills">
@@ -218,22 +216,22 @@ section {
 <div class="skills">
 <div class="skill">
 <h3>VFX</h3>
-<ul><li>Particles</li><li>Abilities</li><li>Trails</li></ul>
+<ul><li>Particles</li><li>Abilities</li><li>Combat FX</li></ul>
 </div>
 <div class="skill">
 <h3>Scripting</h3>
-<ul><li>Combat</li><li>Systems</li><li>Optimization</li></ul>
+<ul><li>Combat Systems</li><li>Game Logic</li><li>Optimization</li></ul>
 </div>
 <div class="skill">
 <h3>GUI</h3>
-<ul><li>Menus</li><li>HUD</li><li>UX Design</li></ul>
+<ul><li>HUD</li><li>Menus</li><li>UX Design</li></ul>
 </div>
 </div>
 </section>
 
 <section id="work">
 <h2 class="title">Work</h2>
-<div class="youtube-grid" id="youtube-grid"></div>
+<div class="grid" id="grid"></div>
 </section>
 
 <section id="reviews">
@@ -248,5 +246,48 @@ section {
 <section id="socials">
 <h2 class="title">Socials</h2>
 <div class="socials">
-<a>Discord: jscaleb8913 (best contact)</a>
-<a href="https://roblox.com/users/StormSpeedSlayer" target="_blank">Roblox</
+<a>Discord: jscaleb8913</a>
+<a href="https://www.roblox.com/users/StormSpeedSlayer" target="_blank">Roblox</a>
+<a href="https://x.com/jscaleb8913" target="_blank">X (Twitter)</a>
+</div>
+</section>
+
+<!-- Modal -->
+<div id="modal">
+<div id="close">×</div>
+<iframe id="frame"></iframe>
+</div>
+
+<script>
+/* Cursor follow */
+const cursor=document.querySelector(".cursor");
+window.addEventListener("mousemove",e=>{
+  cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+});
+
+/* Modal */
+const modal=document.getElementById("modal");
+const frame=document.getElementById("frame");
+document.getElementById("close").onclick=()=>{modal.style.display="none";frame.src="";};
+function openVideo(id){frame.src=`https://www.youtube.com/embed/${id}`;modal.style.display="flex";}
+
+/* YouTube auto populate */
+const API_KEY="YOUR_API_KEY";
+const CHANNEL_ID="UCN0kprprvA-1bWbNzfk6HRg";
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=8`)
+.then(r=>r.json())
+.then(data=>{
+  const grid=document.getElementById("grid");
+  data.items.forEach(v=>{
+    if(v.id.videoId){
+      const el=document.createElement("div");
+      el.className="video";
+      el.innerHTML=`<img src="${v.snippet.thumbnails.high.url}"><h4>${v.snippet.title}</h4>`;
+      el.onclick=()=>openVideo(v.id.videoId);
+      grid.appendChild(el);
+    }
+  });
+});
+</script>
+</body>
+</html>
