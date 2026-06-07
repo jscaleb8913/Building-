@@ -4,406 +4,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSCaleb - Roblox Developer</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-    --bg:#06070b;
-    --surface:#0e1118;
-    --text:#f5f5f5;
-    --muted:#9aa0a6;
-
-    /* CINEMATIC NEON GOLD */
-    --gold:#ffe66a;
-    --gold2:#fff3b0;
-
-    --glow1:rgba(255,230,106,0.25);
-    --glow2:rgba(255,230,106,0.12);
+  --bg:#06070b;
+  --surface:#0e1118;
+  --text:#f5f5f5;
+  --muted:#9aa0a6;
+  --gold:#ffdd33;
+  --gold2:#fff68f;
+  --glow1:rgba(255,221,51,0.25);
+  --glow2:rgba(255,221,51,0.12);
 }
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{
-    font-family:'Space Grotesk',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-/* ===== BACKGROUND GLOW LAYERS ===== */
-.bg-glow{
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,var(--glow1),transparent 60%);
-    filter:blur(60px);
-    top:-200px;
-    left:-200px;
-    z-index:0;
-    animation:float 10s ease-in-out infinite;
-}
-
-.bg-glow2{
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,var(--glow2),transparent 70%);
-    filter:blur(80px);
-    bottom:-200px;
-    right:-200px;
-    z-index:0;
-    animation:float2 12s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(60px,40px);}
-}
-@keyframes float2{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(-60px,-30px);}
-}
-
-/* HEADER */
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    padding:18px 40px;
-    background:rgba(6,7,11,0.6);
-    backdrop-filter:blur(12px);
-    z-index:1000;
-    border-bottom:1px solid rgba(255,230,106,0.08);
-}
-
-header h1{
-    color:var(--gold);
-    font-size:20px;
-    letter-spacing:1px;
-}
-
-nav a{
-    margin-left:18px;
-    color:var(--muted);
-    text-decoration:none;
-    font-weight:600;
-    transition:0.2s;
-}
-
-nav a:hover{
-    color:var(--gold);
-}
-
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    z-index:1;
-}
-
-.hero h1{
-    font-size:92px;
-    background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow:0 0 30px rgba(255,230,106,0.15);
-    animation:shine 6s infinite linear;
-    background-size:200%;
-}
-
-@keyframes shine{
-    0%{background-position:0%;}
-    100%{background-position:200%;}
-}
-
-.hero p{
-    color:var(--muted);
-    margin-top:10px;
-    font-size:18px;
-}
-
-.hero a{
-    margin-top:22px;
-    padding:12px 26px;
-    background:var(--gold);
-    color:#000;
-    font-weight:700;
-    border-radius:10px;
-    text-decoration:none;
-    box-shadow:0 0 25px rgba(255,230,106,0.25);
-}
-
-/* SECTIONS */
-section{
-    padding:120px 20px;
-    max-width:1100px;
-    margin:auto;
-    position:relative;
-    z-index:1;
-}
-
-.title{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:50px;
-    color:var(--gold);
-}
-
-/* ABOUT */
-.about{
-    text-align:center;
-    max-width:750px;
-    margin:auto;
-    color:var(--muted);
-    font-size:18px;
-}
-
-/* SKILLS */
-.skills{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.skill{
-    background:var(--surface);
-    padding:25px;
-    border-radius:14px;
-    min-width:250px;
-    border:1px solid rgba(255,255,255,0.05);
-    transition:0.3s;
-}
-
-.skill:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 30px rgba(255,230,106,0.12);
-}
-
-.skill h3{
-    color:var(--gold);
-}
-
-.skill ul{
-    list-style:none;
-    color:var(--muted);
-    margin-top:10px;
-}
-
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+.bg-glow,.bg-glow2{position:fixed;width:600px;height:600px;filter:blur(80px);border-radius:50%;z-index:0;}
+.bg-glow{top:-250px;left:-250px;background:radial-gradient(circle,var(--glow1),transparent 60%);animation:float1 10s ease-in-out infinite;}
+.bg-glow2{bottom:-250px;right:-250px;background:radial-gradient(circle,var(--glow2),transparent 70%);animation:float2 12s ease-in-out infinite;}
+@keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(80px,50px);}}
+@keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(-80px,-40px);}}
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:18px 40px;background:rgba(6,7,11,0.6);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid rgba(255,221,51,0.08);}
+header h1{color:var(--gold);font-size:20px;letter-spacing:1px;}
+nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600;transition:0.2s;}
+nav a:hover{color:var(--gold);}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1;}
+.hero h1{font-size:92px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 20px rgba(255,221,51,0.15);animation:shine 6s infinite linear;background-size:200%;}
+@keyframes shine{0%{background-position:0%;}100%{background-position:200%;}}
+.hero p{color:var(--muted);margin-top:10px;font-size:18px;}
+.hero a{margin-top:22px;padding:12px 26px;background:var(--gold);color:#000;font-weight:700;border-radius:10px;text-decoration:none;box-shadow:0 0 25px rgba(255,221,51,0.25);}
+section{padding:120px 20px;max-width:1100px;margin:auto;position:relative;z-index:1;}
+.title{text-align:center;font-size:40px;margin-bottom:50px;color:var(--gold);}
+.about{text-align:center;max-width:750px;margin:auto;color:var(--muted);font-size:18px;}
+.skills{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+.skill{background:var(--surface);padding:25px;border-radius:14px;min-width:250px;border:1px solid rgba(255,255,255,0.05);transition:0.4s;perspective:800px;}
+.skill:hover{transform:translateY(-5px) rotateX(5deg);box-shadow:0 0 25px rgba(255,221,51,0.15);}
+.skill h3{color:var(--gold);}
+.skill ul{list-style:none;color:var(--muted);margin-top:10px;}
 .skill li{margin:6px 0;}
-
-/* YOUTUBE GRID */
-.youtube-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:20px;
-}
-
-.video{
-    background:var(--surface);
-    border-radius:14px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,0.05);
-    transition:0.3s;
-}
-
-.video:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 35px rgba(255,230,106,0.18);
-}
-
-.video iframe{
-    width:100%;
-    height:190px;
-}
-
-.video h3{
-    padding:12px;
-    font-size:13px;
-    color:var(--muted);
-}
-
-/* REVIEWS */
-.reviews{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.review{
-    background:var(--surface);
-    padding:10px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,0.05);
-    transition:0.3s;
-}
-
-.review:hover{
-    transform:scale(1.02);
-    box-shadow:0 0 25px rgba(255,230,106,0.15);
-}
-
-.review img{
-    width:100%;
-    border-radius:10px;
-}
-
-/* SOCIALS */
-.socials{
-    text-align:center;
-}
-
-.socials a{
-    display:block;
-    margin:10px;
-    color:var(--gold);
-    font-weight:700;
-    text-decoration:none;
-    font-size:18px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--muted);
-    border-top:1px solid rgba(255,255,255,0.05);
-}
-
-/* SCROLL REVEAL */
-.reveal{
-    opacity:0;
-    transform:translateY(20px);
-    transition:0.8s ease;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
+.youtube-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+.video{background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);transition:0.4s;transform-style:preserve-3d;cursor:pointer;}
+.video:hover{transform:translateY(-5px) rotateX(5deg);box-shadow:0 0 40px rgba(255,221,51,0.2);}
+.video img{width:100%;display:block;}
+.video h3{padding:12px;font-size:13px;color:var(--muted);}
+#modal{position:fixed;top:0;left:0;width:100%;height:100%;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,0.85);z-index:2000;}
+#modal iframe{width:80%;height:60%;border:none;border-radius:12px;}
+#modalClose{position:absolute;top:20px;right:30px;font-size:30px;color:var(--gold);cursor:pointer;}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.review{background:var(--surface);padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);transition:0.4s;transform-style:preserve-3d;}
+.review:hover{transform:scale(1.03) rotateY(3deg);box-shadow:0 0 35px rgba(255,221,51,0.15);}
+.review img{width:100%;border-radius:10px;}
+.socials{text-align:center;}
+.socials a{display:block;margin:10px;color:var(--gold);font-weight:700;text-decoration:none;font-size:18px;}
+.socials a:hover{text-shadow:0 0 15px var(--gold);}
+footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.05);}
+.reveal{opacity:0;transform:translateY(20px);transition:0.8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
 </style>
 </head>
-
 <body>
-
 <div class="bg-glow"></div>
 <div class="bg-glow2"></div>
 
 <header>
-    <h1>JSCaleb</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#socials">Socials</a>
-    </nav>
+<h1>JSCaleb</h1>
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#work">Work</a>
+<a href="#reviews">Reviews</a>
+<a href="#socials">Socials</a>
+</nav>
 </header>
 
 <section class="hero">
-    <h1>JSCaleb</h1>
-    <p>Roblox Developer • VFX • Scripting • GUI</p>
-    <a href="#work">View Work</a>
+<h1>JSCaleb</h1>
+<p>Roblox Developer • VFX • Scripting • GUI</p>
+<a href="#work">View Work</a>
 </section>
 
 <section id="about" class="reveal">
-    <h2 class="title">About Me</h2>
-    <p class="about">
-        I'm StormSpeedSlayer on Roblox (JSCaleb). I specialize in high-quality VFX, scripting systems, and UI design for Roblox experiences.
-    </p>
+<h2 class="title">About Me</h2>
+<p class="about">I'm StormSpeedSlayer on Roblox (JSCaleb). I specialize in high-quality VFX, scripting, and GUI design for immersive Roblox experiences.</p>
 </section>
 
 <section id="skills" class="reveal">
-    <h2 class="title">Skills</h2>
-    <div class="skills">
-        <div class="skill">
-            <h3>VFX</h3>
-            <ul><li>Particles</li><li>Trails</li><li>Abilities</li></ul>
-        </div>
-
-        <div class="skill">
-            <h3>Scripting</h3>
-            <ul><li>Combat Systems</li><li>Optimization</li><li>Game Logic</li></ul>
-        </div>
-
-        <div class="skill">
-            <h3>GUI</h3>
-            <ul><li>HUD Design</li><li>Menus</li><li>Animations</li></ul>
-        </div>
-    </div>
+<h2 class="title">Skills</h2>
+<div class="skills">
+<div class="skill"><h3>VFX</h3><ul><li>Particles</li><li>Trails</li><li>Abilities</li></ul></div>
+<div class="skill"><h3>Scripting</h3><ul><li>Combat Systems</li><li>GUI Logic</li><li>Server-Client</li></ul></div>
+<div class="skill"><h3>GUI</h3><ul><li>Menus</li><li>HUD</li><li>Interactive Elements</li></ul></div>
+</div>
 </section>
 
 <section id="work" class="reveal">
-    <h2 class="title">Work</h2>
-    <div class="youtube-grid" id="youtubeGrid"></div>
+<h2 class="title">Work</h2>
+<div class="youtube-grid" id="youtubeVideos">
+<!-- YouTube videos will auto-load here -->
+</div>
 </section>
 
 <section id="reviews" class="reveal">
-    <h2 class="title">Reviews</h2>
-    <div class="reviews">
-        <div class="review"><img src="https://i.imgur.com/abcd123.png"></div>
-        <div class="review"><img src="https://i.imgur.com/wxyz456.png"></div>
-        <div class="review"><img src="https://i.imgur.com/efgh789.jpg"></div>
-    </div>
+<h2 class="title">Reviews</h2>
+<div class="reviews">
+<div class="review"><img src="https://via.placeholder.com/300x200.png?text=Review+1" alt="Review"></div>
+<div class="review"><img src="https://via.placeholder.com/300x200.png?text=Review+2" alt="Review"></div>
+<div class="review"><img src="https://via.placeholder.com/300x200.png?text=Review+3" alt="Review"></div>
+</div>
 </section>
 
 <section id="socials" class="reveal">
-    <h2 class="title">Socials</h2>
-    <div class="socials">
-        <a>Discord: jscaleb8913 (recommended)</a>
-        <a href="https://www.roblox.com/users/StormSpeedSlayer/profile">Roblox: StormSpeedSlayer</a>
-        <a href="https://twitter.com/jscaleb8913">X: @jscaleb8913</a>
-    </div>
+<h2 class="title">Socials</h2>
+<div class="socials">
+<a href="https://roblox.com/users/StormSpeedSlayer" target="_blank">Roblox: StormSpeedSlayer</a>
+<a href="https://x.com/jscaleb8913" target="_blank">X: jscaleb8913</a>
+<a href="https://discord.com" target="_blank">Discord: jscaleb8913 (best for contact)</a>
+</div>
 </section>
 
 <footer>
-    © 2026 JSCaleb — Roblox Developer
+<p>© JSCaleb 2026</p>
 </footer>
 
+<div id="modal">
+<span id="modalClose">&times;</span>
+<iframe id="modalIframe" src="" allowfullscreen></iframe>
+</div>
+
 <script>
-const API_KEY = "YOUR_API_KEY";
-const CHANNEL_ID = "YOUR_CHANNEL_ID";
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{for(const r of reveals){const top=r.getBoundingClientRect().top; if(top<window.innerHeight-50){r.classList.add('active');}}});
 
-async function loadVideos(){
-    const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6`);
-    const data = await res.json();
+// Modal logic
+const modal=document.getElementById('modal');
+const modalIframe=document.getElementById('modalIframe');
+const modalClose=document.getElementById('modalClose');
+document.body.addEventListener('click',e=>{if(e.target.closest('.video')){const vid=e.target.closest('.video').dataset.video; modalIframe.src=`https://www.youtube.com/embed/${vid}?autoplay=1`; modal.style.display='flex';}});
+modalClose.addEventListener('click',()=>{modal.style.display='none';modalIframe.src='';});
+window.addEventListener('click',e=>{if(e.target==modal){modal.style.display='none';modalIframe.src='';}});
 
-    const grid = document.getElementById("youtubeGrid");
-
-    data.items.forEach(v=>{
-        if(v.id.videoId){
-            grid.innerHTML += `
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/${v.id.videoId}" allowfullscreen></iframe>
-                <h3>${v.snippet.title}</h3>
-            </div>`;
-        }
-    });
-}
-
-loadVideos();
-
-/* scroll reveal */
-const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting){
-            e.target.classList.add("active");
-        }
-    });
-});
-
-document.querySelectorAll(".reveal").forEach(el=>{
-    obs.observe(el);
+// YouTube fetch
+const channelId='UCN0kprprvA-1bWbNzfk6HRg';
+const apiKey='YOUR_YOUTUBE_API_KEY'; // Replace with your own API key
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=12`)
+.then(res=>res.json())
+.then(data=>{
+  const container=document.getElementById('youtubeVideos');
+  data.items.forEach(item=>{
+    if(item.id.kind==='youtube#video'){
+      const div=document.createElement('div');
+      div.className='video';
+      div.dataset.video=item.id.videoId;
+      div.innerHTML=`<img src="${item.snippet.thumbnails.high.url}" alt="${item.snippet.title}"><h3>${item.snippet.title}</h3>`;
+      container.appendChild(div);
+    }
+  });
 });
 </script>
-
 </body>
 </html>
