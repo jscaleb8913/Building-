@@ -8,14 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --bg:#080808;
-    --surface:#121212;
-    --surface2:#1a1a1a;
-    --gold:#f5c542;
-    --goldsoft:#d9a92f;
-    --white:#f8f8f8;
-    --gray:#9b9b9b;
+/* ===================== THEME ===================== */
+:root {
+    --bg:#07070a;
+    --surface:#111318;
+    --surface2:#171a21;
+
+    --gold:#d4af37;
+    --gold2:#f6e27a;
+    --glow:rgba(212,175,55,0.25);
+
+    --text:#f5f5f5;
+    --muted:#9aa0a6;
 }
 
 *{
@@ -27,43 +31,46 @@
 body{
     font-family:'Space Grotesk',sans-serif;
     background:var(--bg);
-    color:var(--white);
+    color:var(--text);
     overflow-x:hidden;
     scroll-behavior:smooth;
 }
 
-a{
-    color:var(--gold);
-    text-decoration:none;
+/* ===================== CURSOR GLOW ===================== */
+.glow{
+    position:fixed;
+    width:250px;
+    height:250px;
+    background:var(--gold);
+    filter:blur(150px);
+    opacity:0.15;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:0;
 }
 
-a:hover{
-    color:var(--goldsoft);
-}
-
-/* HEADER */
+/* ===================== HEADER ===================== */
 header{
     position:fixed;
     top:0;
-    left:0;
     width:100%;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:20px 40px;
-    background:rgba(8,8,8,0.85);
+    background:rgba(7,7,10,0.85);
     backdrop-filter:blur(10px);
     z-index:1000;
 }
 
 header h1{
+    font-size:20px;
     color:var(--gold);
-    font-size:22px;
 }
 
 nav a{
     margin-left:20px;
-    color:var(--white);
+    color:var(--text);
+    text-decoration:none;
     font-weight:700;
 }
 
@@ -71,7 +78,7 @@ nav a:hover{
     color:var(--gold);
 }
 
-/* HERO */
+/* ===================== HERO ===================== */
 .hero{
     height:100vh;
     display:flex;
@@ -79,45 +86,44 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
+    position:relative;
 }
 
 .hero h1{
-    font-size:80px;
-    color:var(--gold);
+    font-size:90px;
+    background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shine 6s linear infinite;
+    background-size:200%;
+}
+
+@keyframes shine{
+    0%{background-position:0%;}
+    100%{background-position:200%;}
 }
 
 .hero p{
-    font-size:22px;
-    color:var(--gray);
+    color:var(--muted);
+    font-size:20px;
     margin-top:10px;
 }
 
 .hero a{
     margin-top:25px;
-    padding:12px 25px;
+    padding:12px 26px;
     background:var(--gold);
     color:#000;
     font-weight:700;
     border-radius:8px;
+    text-decoration:none;
 }
 
 .hero a:hover{
-    background:var(--goldsoft);
+    background:var(--gold2);
 }
 
-/* GLOW CURSOR */
-.glow{
-    position:fixed;
-    width:200px;
-    height:200px;
-    background:var(--gold);
-    filter:blur(140px);
-    opacity:0.15;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-}
-
-/* SECTIONS */
+/* ===================== SECTIONS ===================== */
 section{
     padding:120px 20px;
     max-width:1100px;
@@ -125,17 +131,17 @@ section{
 }
 
 .title{
-    font-size:42px;
     text-align:center;
+    font-size:40px;
     margin-bottom:60px;
     color:var(--gold);
 }
 
-/* PROJECTS */
+/* ===================== PROJECTS ===================== */
 .projects{
     display:flex;
     flex-direction:column;
-    gap:50px;
+    gap:60px;
 }
 
 .project{
@@ -143,24 +149,25 @@ section{
     padding:30px;
     border-radius:12px;
     transition:0.3s;
+    border:1px solid transparent;
 }
 
 .project:hover{
-    transform:translateY(-8px);
-    background:var(--surface2);
+    transform:translateY(-10px);
+    box-shadow:0 0 40px var(--glow);
+    border:1px solid rgba(212,175,55,0.2);
 }
 
 .project h3{
     color:var(--gold);
-    font-size:28px;
-    margin-bottom:10px;
+    font-size:26px;
 }
 
 .project p{
-    color:var(--gray);
+    color:var(--muted);
 }
 
-/* SKILLS */
+/* ===================== SKILLS ===================== */
 .skills{
     display:flex;
     gap:20px;
@@ -179,28 +186,54 @@ section{
 
 .skill h3{
     color:var(--gold);
-    margin-bottom:10px;
 }
 
 .skill ul{
     list-style:none;
-    color:var(--gray);
+    color:var(--muted);
+    margin-top:10px;
 }
 
 .skill li{
     margin:6px 0;
 }
 
-/* ABOUT */
+/* ===================== YOUTUBE ===================== */
+.youtube-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.video{
+    background:var(--surface);
+    padding:15px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.video iframe{
+    width:100%;
+    height:180px;
+    border-radius:8px;
+}
+
+.video h3{
+    font-size:16px;
+    margin-top:10px;
+    color:var(--text);
+}
+
+/* ===================== ABOUT ===================== */
 .about{
     text-align:center;
-    max-width:700px;
+    max-width:750px;
     margin:auto;
-    color:var(--gray);
+    color:var(--muted);
     font-size:18px;
 }
 
-/* CONTACT */
+/* ===================== CONTACT ===================== */
 .contact{
     text-align:center;
 }
@@ -208,17 +241,17 @@ section{
 .contact a{
     font-size:20px;
     font-weight:700;
+    color:var(--gold);
 }
 
-/* FOOTER */
+/* ===================== FOOTER ===================== */
 footer{
     text-align:center;
     padding:40px;
-    color:var(--gray);
+    color:var(--muted);
     border-top:1px solid #222;
 }
 </style>
-
 </head>
 
 <body>
@@ -230,6 +263,7 @@ footer{
     <nav>
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
+        <a href="#youtube">YouTube</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -241,22 +275,24 @@ footer{
     <a href="#work">View Work</a>
 </section>
 
+<!-- ===================== WORK ===================== -->
 <section id="work">
     <h2 class="title">Selected Work</h2>
 
     <div class="projects">
         <div class="project">
-            <h3>Upcoming Roblox Game</h3>
+            <h3>Upcoming Roblox Project</h3>
             <p>Combat systems, VFX, and GUI design for an upcoming release.</p>
         </div>
 
         <div class="project">
             <h3>VFX Framework</h3>
-            <p>Reusable visual effects system for abilities and combat.</p>
+            <p>Reusable system for abilities, impacts, and combat effects.</p>
         </div>
     </div>
 </section>
 
+<!-- ===================== SKILLS ===================== -->
 <section id="skills">
     <h2 class="title">What I Do</h2>
 
@@ -266,8 +302,8 @@ footer{
             <ul>
                 <li>Particles</li>
                 <li>Trails</li>
-                <li>Hit Effects</li>
                 <li>Abilities</li>
+                <li>Impacts</li>
             </ul>
         </div>
 
@@ -284,34 +320,40 @@ footer{
         <div class="skill">
             <h3>GUI</h3>
             <ul>
-                <li>HUD Design</li>
+                <li>HUD</li>
                 <li>Menus</li>
                 <li>Animations</li>
-                <li>User Experience</li>
+                <li>UX Design</li>
             </ul>
         </div>
     </div>
 </section>
 
+<!-- ===================== YOUTUBE ===================== -->
+<section id="youtube">
+    <h2 class="title">Latest Videos</h2>
+    <div class="youtube-grid" id="youtubeGrid">
+        <!-- Videos auto-load here -->
+    </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
 <section id="about">
     <h2 class="title">About</h2>
 
     <p class="about">
-        I'm JSCaleb, also known as StormSpeedSlayer on Roblox.
-        I specialize in VFX, scripting, and GUI design, creating
-        polished gameplay experiences that feel smooth, responsive,
-        and visually satisfying.
+        I'm JSCaleb (StormSpeedSlayer on Roblox). I focus on building polished gameplay systems with high-quality VFX,
+        scripting, and UI design. Currently developing upcoming Roblox experiences.
     </p>
 </section>
 
+<!-- ===================== CONTACT ===================== -->
 <section id="contact">
     <h2 class="title">Contact</h2>
 
     <div class="contact">
         <p>Discord</p>
-        <a href="https://discord.com/users/jscaleb8913" target="_blank">
-            jscaleb8913
-        </a>
+        <a href="https://discord.com/users/jscaleb8913">jscaleb8913</a>
     </div>
 </section>
 
@@ -320,12 +362,51 @@ footer{
 </footer>
 
 <script>
+
+/* ===================== CURSOR GLOW ===================== */
 const glow = document.getElementById("glow");
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove",(e)=>{
     glow.style.left = e.clientX + "px";
     glow.style.top = e.clientY + "px";
 });
+
+/* ===================== YOUTUBE API (AUTO LOAD) ===================== */
+/*
+HOW TO USE:
+1. Get API key from Google Cloud
+2. Put your channel ID below
+*/
+
+const API_KEY = "YOUR_API_KEY";
+const CHANNEL_ID = "YOUR_CHANNEL_ID";
+
+async function loadVideos(){
+    try{
+        const res = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6`
+        );
+
+        const data = await res.json();
+        const grid = document.getElementById("youtubeGrid");
+
+        data.items.forEach(video=>{
+            if(video.id.videoId){
+                grid.innerHTML += `
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe>
+                    <h3>${video.snippet.title}</h3>
+                </div>`;
+            }
+        });
+
+    }catch(err){
+        console.log("YouTube load failed",err);
+    }
+}
+
+loadVideos();
+
 </script>
 
 </body>
